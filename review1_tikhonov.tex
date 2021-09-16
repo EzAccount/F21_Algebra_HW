@@ -14,44 +14,130 @@
 \def\Sympl{\rm Sympl}
 \def\Fix{\rm Fix}
 \author{M. Tikhonov}
+\newtheorem{claim}{Claim}
 \begin{document}
 
 \subsection{}
 
 Let $T$ be injective map and $\{ v \}_n$ linearly independent, i.e. $\sum \alpha_i v_i = 0$ only if $\alpha_i = 0$ for each $i$.
-Assume images are not linearly independent. Then there are scalaras $\beta_i$ with $\prod \beta_i \neq 0$ s.t.
+Assume images are not linearly independent. Then there are scalaras $\beta_i$ with $\sum |\beta_i| > 0$ s.t.
 $$ 0 = \sum \beta_i T (v_i) = T(\sum \beta_i v_i)$$
-where we've used that $T$ is linear. Since $T$ is injective, $\sum \beta_i v_i = 0$, which contradicts the defenition of linear independent. Thus injective linear maps perserve linear independence.
+where we've used that $T$ is linear. Since $T$ is injective, $\sum \beta_i v_i = 0$, which contradicts the definition of linear independent. Thus injective linear maps preserve linear independence.
 
 \subsection{
 }
 
 \begin{claim}
-    $dim (P_{n+1} (\R)) = n+2$
+    $dim (P_{n+1} (\R)) >= n+2$
 \end{claim}
 
 \begin{proof}
-    Let $e_i = x^i$ for $i \in \[0; n+1 \]$. Assume $e_i$ are linearly dependent, meaning $\exists a_i$ s.t. $p(x) = \sum a_i e_i = 0$ for all $x$. But we know that polynomial of degree $n+1$ has at most $n+1$ roots unless it's zero polynomial. So in order to satisfy it for any point $a_i == 0$ for all $i$.
-    Thus $x^i$ are linearly indepenent.
+    Let $e_i = x^i$ for $i \in \left[0; n+1 \right] $. 
+    Assume $e_i$ are linearly dependent, meaning $\exists a_i$ s.t. $p(x) = \sum a_i e_i = 0$ for all $x$. 
+    But we know that polynomial of degree $n+1$ has at most $n+1$ roots unless it's zero polynomial. 
+    So in order to satisfy it for any point $a_i == 0$ for all $i$.
+    Thus $x^i$ are linearly independent and we have at least $n+2$ vectors.
 \end{proof}
-    From the claim above, we have that $dim (P) = n+2$. We're given with a set of $n+1$ linear equations on cooeficients of the polynomial, thus the space of solutions is 1 dimensional. 
+    From the claim above, we have that $dim (P) = n+2$.
+    We're given with a set of $n+1$ linear equations on coefficients of the polynomial, thus the space of solutions is at least 1 dimensional. 
 
 \subsection{
 }
 a) 
 
 Clearly $0 \in T^{-1} (W_0)$, since $T(0) = 0 \in W_0$.
-Let $a,b \in T^{-1} (W_0)$. Then $\exists T(a) = x, T(b) = y$. As $W_0$ is a abelian group, $x+y \in W_0$. Since $T$ is homomorphism $x+y = T(a) + T(b) = T(a + b) \in W_0$
+Let $a,b \in T^{-1} (W_0)$. Then $T(a+b) = T(a) + T(b) \in W_0$
+Also $T(\alpha a) = \alpha T(a) \in W_0$
 Let $a \in T^{-1}(W_0)$ be an element in the preimage. $T(a) \in W_0$, and since $W_0$ is a abelian group $-T(a) \in W_0$. But since linear maps are homomorphisms, we have:
 $-T(a) = T(-a) \in W_0$
 
-Thus $T^{-1}$ is abelian subgroup. 
+Thus $T^{-1}$ is abelian subgroup and is closed under scalar multiplication.
 
-b) Let $f$ be restriction of $T$ on $X = T^{-1} W_0$. Then $f : X \to W_0$ is injective homomorphism and it induces an isomophism $f*: X/ker f^* \to W_0$. Notice that $\ker f^* = \ker f = \ker T$. Taking dim from both sides, we have:
+b) Let $f$ be restriction of $T$ on $X = T^{-1} W_0$. Then $f : X \to W_0$ is surjective homomorphism and it induces an isomophism $f*: X/ker f^* \overset{\sim}{\to} W_0$. Notice that $\ker f^* = \ker f = \ker T$. Taking dim from both sides, we have:
 $$ \dim (X) = \dim (W_0) + \dim (\ker (T))$$
 
 \subsection{
 }
+a)
+Assume $A, B \in M_{2\times 2} (\R)$ s.t. 
+$$ ABA^{-1} B^{-1} = \begin{pmatrix}
+1 & 0 \\
+0 & 2
+\end{pmatrix}$$
+Taking $\det$ from both sides, we get:
+$$ \det(ABA^{-1}B^{-1} = \det(A) \det(B) \det(A^{-1} \det(B^{-1} = \det(A A^{-1}) \det(B B^{-1}) = 1$$
+On the other hand,
+$$ \det \begin{pmatrix}
+1 & 0\\
+0 & 2
+\end{pmatrix} = 2$$
+Thus we have $$1=2$$ so it's impossible.
 
+b) Take $\text{Tr}$ from both sides:
+$$
+Tr \begin{pmatrix}
+1 & 0\\
+0 & 2
+\end{pmatrix}
+$$
+$$ Tr(AB - BA) = Tr(AB) - Tr(BA) = Tr(AB) - Tr(AB) = 0$$
+Thus, impossible. 
 
-    \end{document}
+\subsection{}
+
+\subsection{}
+Assume it's not true and we have eigenvector $v$ corresponding to $0$. Let  $$v' = \frac{1}{\max_i |v_i|} v$$. Since $v$ is non-zero vector, this is justified.
+Now consider $w_j = A_{ji} v'_i <= \sum_i A_ji v'_j < \sum_i \frac{1}{n} v'_j = v_j$.
+On the other hand we know that $Av' = v'$, meaning that $v'= w$. But they are not equal component-wise, thus we're done.
+
+\subsection{}
+
+a) If $A^2 = I_n$, then $A^2 - I = 0$ and $f(x) = x^2-1$ annihilates $A$. Then the minimal polynomial is either $x-1, x+1$ or $x^2-1$. Since minimal polynomial is product of linear polynomials $A$ is diagnolizable. (It follows from JCF decomposition, since minimal polynomial of $m \times m$ block is of degree $m$.) 
+
+b) 
+$$ \begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+$$
+satisfies the problem. Clearly eigenvalues of this matrix are zeros, but only diagonal operator that has all zero eigenvalues is zero.
+
+\subsection{}
+Assume not, i.e. Jordan decomposition of $A$ has blocks of size $>1$. Then squaring it we will get at least one repeated value on diagonal. Since the resulting matrix is at least upper-diagonal (as Jordan form is) -- elements on diagonal are eigenvalues. Thus $A^2$ has repeated eigenvalue, which contradicts the problem.
+
+\subsection{}
+$$ \chi (x) = x^2 - Tr(A) x + \det(A)$$
+Now we know that $\chi$ annihilates $A$, i.e.
+\begin{equation}
+    \label{xi}
+    A^2 - Tr(A) A + \det(A) = 0
+\end{equation}
+Now, multiply both sides by $A$:
+$$A^3 - Tr(A) A^2 + det(A) A = 0$$
+and taking trace of both sides:
+\begin{equation}
+    \label{almost}
+    Tr(A^3) = Tr(A) Tr(A^2) - \det(A) Tr(A)
+\end{equation}
+Back to \ref{xi}, if we take $Tr$ from both sides:
+$$Tr(A^2) = Tr^2(A) - \det(A) Tr(I)$$
+Multiplying by $Tr(A)$
+\begin{equation}
+    \label{res2}
+    Tr(A^2) Tr(A) =  Tr^3(A) - 2\det(A) Tr(A)
+\end{equation}
+Now plug \ref{res2} in \ref{almost}.
+$$Tr(A^3) = Tr^3(A) - 3 \det(A) Tr(A)$$
+Thus we're done.
+
+\subsection{
+}
+
+a) Notice that $f(t) \det(A^T) = \det(A - tI) \det(A^T) = \det(A A^T - t A^T) = \det(I - t A^t) = (-t)^n \det(- t^{-1} + A^t) =  (-t)^n f(t^{-1})$
+Dividing by $\det(A^T) = (\det A)^{-1}$ we obtain:
+$$ f(t) = (-t)^n \det(A) f(t^{-1})$$
+
+b) Let $v$ be an eigenvector of $A$, i.e. $Av = \lambda v$. Multiplying by $A^T$ we get $v = \lambda A^T v$, so $A^T v = \frac{1}{\lambda} v$, i.e. $v$ is eigenvector of $A^T$ with eigenvalue $\frac{1}{\lambda}$. But $A$ and $A^T$ share spectrum, thus $\frac1{\lambda}$ is eigenvalue of $A$ as well.
+
+c) By a) we have $f(t) = (-t)^n \det(A) f(t^{-1})$. Plug in $t=1$, we get $f(1) = -\det(A) f(1)$ so either $f(1) = 0$ or $\det(A) = -1$. But since $\det(A) = 1$, we get $f(1) = 0$, meaning that $1$ is a root of characterestic polynomial, thus eigenvalue.
+\end{document}
